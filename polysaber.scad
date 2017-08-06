@@ -60,6 +60,7 @@ translate([0, 0, M_EMITTER])
 	RIDGE = 6;
 
 	difference() {
+		/*
 		union() {
 			cylinder(d=D_OUTER, h=Z_EMITTER);
 
@@ -76,6 +77,27 @@ translate([0, 0, M_EMITTER])
 				}
 			}
 		}
-		cylinder(d=D_INNER, h=Z_EMITTER);
+		*/
+		union() {
+			difference() 
+			{
+				D = D_OUTER*2 + 2;
+				OFFSET = 30;
+				cylinder(d=D_OUTER, h=Z_EMITTER+30);
+				translate([-20, D/4, 25+OFFSET]) rotate([0, 90, 0])
+					cylinder(d=D, h=80);
+			}
+			hull() {
+				translate([0, 0, 8]) rotate([-90, 0, 0])
+					cylinder(h=(D_OUTER/2 + 1), d=5);
+				translate([0, 0, 18]) rotate([-90, 0, 0])
+					cylinder(h=(D_OUTER/2 + 1), d=10);
+			}
+			translate([0, 0, 8]) rotate([-90, 0, 0])
+				cylinder(h=(D_OUTER/2 + 2), d=4);
+			translate([0, 0, 18]) rotate([-90, 0, 0])
+				cylinder(h=(D_OUTER/2 + 2), d=4);
+		}
+		cylinder(d=D_INNER, h=Z_EMITTER+100);
 	}
 }
