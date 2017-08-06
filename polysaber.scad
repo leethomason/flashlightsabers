@@ -37,6 +37,17 @@ translate([0, 0, M_BODY]) {
 					}
 				}
 			}
+
+			hull() {
+				translate([0, 0, 50]) rotate([90, 0, 0])
+					cylinder(h=(D_OUTER/2 + 1), d=15);
+				translate([0, 0, 80]) rotate([90, 0, 0])
+					cylinder(h=(D_OUTER/2 + 1), d=15);
+			}
+
+			translate([0, 0, 100]) rotate([90, 0, 90])
+				cylinder(h=(D_OUTER/2 + 1), d=8);
+
 		}
 		cylinder(d=D_INNER, h=Z_BODY);
 	}
